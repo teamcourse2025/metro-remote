@@ -1,0 +1,23 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "emitDecoratorMetadata": false,
+    "target": "es2022",
+    "module": "preserve",
+    "lib": ["es2020", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@metro-remote/metro-self": [
+        "src/libs/metro-self/metro-self/src/index.ts"
+      ],
+      "@metro-remote/metro-self-common-types": [
+        "src/libs/metro-self/metro-self-common-types/src/index.ts"
+      ],
+      "@metro-remote/metro-self-services": [
+        "src/libs/metro-self/metro-self-services/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
