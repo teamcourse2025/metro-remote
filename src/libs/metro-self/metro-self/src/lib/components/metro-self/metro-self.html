@@ -1,1 +1,41 @@
-<p>MetroSelf works!</p>
+<div class="side-panel">
+  <div class="header">Metro Self</div>
+
+  <button
+    [cdkMenuTriggerFor]="!selectedAction ? menu : null"
+    [ngClass]=" selectedAction ? 'action-text-selected' : 'action-text-not-selected'"
+    class="action-button selected-action"
+  >
+    <span class="action-text"
+      >{{ selectedAction?.title ?? 'בחר פעולה לביצוע' }}</span
+    ><span *ngIf="!selectedAction">▼</span>
+  </button>
+
+  <ng-template #menu>
+    <div class="example-menu" cdkMenu>
+      <button
+        class="action-button"
+        cdkMenuItem
+        *ngFor="let action of actions"
+        (click)="selectAction(action)"
+      >
+        <span class="action-text">{{ action.title }}</span>
+      </button>
+    </div>
+  </ng-template>
+  <div class="action-process">
+    <div *ngIf="selectedAction && !confirmed" class="warning">
+      <p>{{ selectedAction.description }}</p>
+      <button class="ok-btn" (click)="confirmAction()">אישור</button>
+    </div>
+
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Processing...</p>
+    </div>
+
+    <div *ngIf="resultMessage" class="result" [class.fade-out]="fadeOut">
+      {{ resultMessage }}
+    </div>
+  </div>
+</div>
