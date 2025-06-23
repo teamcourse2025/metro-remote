@@ -7,6 +7,7 @@ import { delay, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'metro-self',
@@ -18,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
     CdkMenu,
     CdkMenuItem,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './metro-self.html',
   styleUrl: './metro-self.css',
@@ -41,6 +43,10 @@ export class MetroSelf {
     this.resultMessage = '';
     this.selectedAction = action;
     this.confirmed = false;
+  }
+
+  cancelAction() {
+    this.selectedAction = null;
   }
 
   confirmAction() {

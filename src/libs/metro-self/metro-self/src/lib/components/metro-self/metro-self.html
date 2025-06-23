@@ -26,12 +26,22 @@
   <div class="action-process">
     <div *ngIf="selectedAction && !confirmed" class="warning">
       <p>{{ selectedAction.description }}</p>
-      <button class="ok-btn" (click)="confirmAction()">אישור</button>
+      <div class="main-actions">
+        <button class="action-btn cancel-btn" (click)="cancelAction()">
+          ביטול
+        </button>
+        <button class="action-btn ok-btn" (click)="confirmAction()">
+          אישור
+        </button>
+      </div>
     </div>
 
     <div *ngIf="loading" class="loading">
-      <div class="spinner"></div>
-      <p>Processing...</p>
+      <mat-progress-spinner
+        class="progress"
+        mode="indeterminate"
+        [diameter]="30"
+      ></mat-progress-spinner>
     </div>
 
     <div *ngIf="resultMessage" class="result" [class.fade-out]="fadeOut">
